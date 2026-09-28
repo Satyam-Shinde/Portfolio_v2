@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #0a1626;
+  --bg-panel: #0d1c2f;
+  --line: rgba(201, 168, 90, 0.16);
+  --line-strong: rgba(201, 168, 90, 0.42);
+  --ink: #f2ecdc;
+  --ink-dim: #a89a78;
+  --accent: #cda05a;
+  --accent-ink: #181005;
+}
+
+:root[data-theme="light"] {
+  --bg: #eef0ee;
+  --bg-panel: #f8f8f6;
+  --line: rgba(30, 24, 10, 0.12);
+  --line-strong: rgba(120, 95, 32, 0.32);
+  --ink: #171c22;
+  --ink-dim: #5b6870;
+  --accent: #a1781f;
+  --accent-ink: #fffaf0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  outline-color: var(--accent);
+}
+
+.sheet {
+  position: relative;
+}
+
+.sheet::before,
+.sheet::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.sheet::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.sheet::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.sheet-tag {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  padding: 0 8px;
+  background: var(--bg);
+}
+
+.hero {
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
